@@ -1,0 +1,4 @@
+module libcompression [system] {
+    header "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/compression.h"
+    export *
+}
