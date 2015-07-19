@@ -6,37 +6,9 @@ Compression is written in Swift. For the Objective-C version see [LAMCompression
 
 Installation
 =====
-To use the Compression category in an app, include the `NSData+Compression.swift` file in your project. You will also need to include the `libcompression` library.
+To use the Compression category in an app, include the `NSData+Compression.swift` file in your project.
 
-Furthermore, you will need to provide either an Objective-C bridging header or a module to allow Swift access to libcompression.
-
-
-####Use an Objective-C bridging header
-
-&#35;import <compression.h> in an [Objective-C bridging header](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html).
-
-####Use a Module
-
-To use a module you first need to create a folder in your Project directory. You can name it whatever you like; I named it “CompressionLibModule”.
-
-Next create a text file in the new directory and name it “module.map”
-
-Add the following to the text file
-
-    module libcompression [system] {
-        header "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/compression.h"
-        export *
-    }
-This creates a module named “libcompression” that contains the `compression.h` header.
-
-There’s one last step. In the `Build Settings` for your `Project` (or `Target`) under `Swift Compiler - Search Paths` you need to add the path to your module’s directory to the `Import Paths`.
-
-    $(SRCROOT)/CompressionLibModule/
-
-Now in any Swift file you want to use CompressionLib add the following import statement
-
-    import libcompression
-
+You will also need to include the `libcompression` library in your project.
 
 NSData Extensions
 =====
