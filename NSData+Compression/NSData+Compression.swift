@@ -49,7 +49,7 @@ extension NSData {
 	
 	/// Returns a NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm.
 	/// 
-	///     let data = NSData(contentsOfArchive: absolutePathToFile, usingCompression: Compression.LZFSE)
+	///     let data = NSData(contentsOfArchive: absolutePathToFile, usedCompression: Compression.LZFSE)
 	///
 	/// - Parameter path: The absolute path of the file from which to read data
 	/// - Parameter usedCompression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
