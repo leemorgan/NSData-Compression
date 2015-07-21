@@ -22,6 +22,30 @@ class NSData_CompressionTests: XCTestCase {
 	}
 	
 	
+	/// init(contentsOfArchive: usingCompression:) tests
+	func test_initContentsOfArchiveUsingCompression() {
+		
+		let verifiedData = testDataOfType("txt")
+		guard let archivePath = NSBundle.mainBundle().pathForResource("TestData", ofType: "lzfse") else {
+			assertionFailure("FATAL ERROR: Failed to get path to archive Test Data")
+			exit(EXIT_FAILURE)
+		}
+		
+		
+		// Test explicit compression NSData(contentsOfArchive: usingCompression:)
+		let explicitData = NSData(contentsOfArchive: archivePath, usingCompression: Compression.LZFSE)
+		XCTAssertTrue(explicitData!.isEqualToData(verifiedData))
+		
+		// Test incorrect explicit compression
+		let incorrectData = NSData(contentsOfArchive: archivePath, usingCompression: Compression.LZ4)
+		XCTAssertNil(incorrectData)
+		
+		// Test implicit compression NSData(contentsOfArchive:)
+		let implicitData = NSData(contentsOfArchive: archivePath)
+		XCTAssertTrue(implicitData!.isEqualToData(verifiedData))
+	}
+	
+	
 	/// uncompressedDataUsingCompression tests
 	func test_uncompressedDataUsingCompression() {
 		
@@ -87,23 +111,23 @@ class NSData_CompressionTests: XCTestCase {
 		let testString = "Hello World"
 		
 		guard let testStringData = testString.dataUsingEncoding(NSUTF8StringEncoding) else {
-			assertionFailure("Failed convert string to data")
-			return
+			assertionFailure("FATAL ERROR: Failed convert string to data")
+			exit(EXIT_FAILURE)
 		}
 		
 		guard let compressedData = testStringData.compressedDataUsingCompression(Compression.LZFSE) else {
-			assertionFailure("Failed to compress data")
-			return
+			assertionFailure("FATAL ERROR: Failed to compress data")
+			exit(EXIT_FAILURE)
 		}
 		
 		guard let uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.LZFSE) else {
-			assertionFailure("Failed to uncompress data")
-			return
+			assertionFailure("FATAL ERROR: Failed to uncompress data")
+			exit(EXIT_FAILURE)
 		}
 		
 		guard let uncompressedString = NSString(bytes: uncompressedData.bytes, length: uncompressedData.length, encoding: NSUTF8StringEncoding) else {
-			assertionFailure("Failed to convert to string")
-			return
+			assertionFailure("FATAL ERROR: Failed to convert to string")
+			exit(EXIT_FAILURE)
 		}
 		
 		print("\(testString) == \(uncompressedString)")
@@ -122,13 +146,19 @@ class NSData_CompressionTests: XCTestCase {
 		let bundle = NSBundle.mainBundle()
 		
 		guard let testDataPath = bundle.pathForResource("TestData", ofType: type) else {
-			assertionFailure("Failed to load test data")
-			return NSData()
+			assertionFailure("FATAL ERROR: Failed to load test data")
+			exit(EXIT_FAILURE)
 		}
 		
 		guard let testData = NSData(contentsOfFile: testDataPath) else {
-			assertionFailure("Failed to load test data")
-			return NSData()
+			assertionFailure("FATAL ERROR: Failed to load test data")
+			exit(EXIT_FAILURE)
+		}
+		
+		// Verify Test Data isn't empty
+		guard testData.length > 0 else {
+			assertionFailure("FATAL ERROR: Test Data is empty")
+			exit(EXIT_FAILURE)
 		}
 		
 		return testData

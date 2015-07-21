@@ -11,15 +11,13 @@ import Compression
 
 /** Available Compression Algorithms
 
-- LAMCompressionLZ4: Fast compression
-
-- LAMCompressionZLIB: Balanced between speed and compression
-
-- LAMCompressionLZMA: High compression
-
-- LAMCompressionLZFSE: Apple-specific high performance compression. Faster and better compression than ZLIB, but slower than LZ4 and does not compress as well as LZMA.
+- Compression.LZ4   : Fast compression
+- Compression.ZLIB  : Balanced between speed and compression
+- Compression.LZMA  : High compression
+- Compression.LZFSE : Apple-specific high performance compression. Faster and better compression than ZLIB, but slower than LZ4 and does not compress as well as LZMA.
 */
 enum Compression {
+	
 	/// Fast compression
 	case LZ4
 	
@@ -34,6 +32,60 @@ enum Compression {
 }
 
 extension NSData {
+	
+	
+	/// Returns a NSData object initialized by decompressing the data from the file specified by `path`. Attempts to determine the appropriate decompression algorithm using the path's extension.
+	///
+	/// This method is equivalent to `NSData(contentsOfArchive:usingCompression:)` with `nil compression`
+	///
+	///     let data = NSData(contentsOfArchive: absolutePathToFile)
+	///
+	/// - Parameter path: The absolute path of the file from which to read data
+	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path`. Returns `nil` if decompression fails.
+	convenience init?(contentsOfArchive path: String) {
+		self.init(contentsOfArchive: path, usingCompression: nil)
+	}
+	
+	
+	/// Returns a NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm.
+	/// 
+	///     let data = NSData(contentsOfArchive: absolutePathToFile, usingCompression: Compression.LZFSE)
+	///
+	/// - Parameter path: The absolute path of the file from which to read data
+	/// - Parameter compression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
+	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
+	convenience init?(contentsOfArchive path: String, usingCompression archiveCompression: Compression?) {
+		
+		// read in the compressed data from disk
+		guard let compressedData = NSData(contentsOfFile: path) else {
+			return nil
+		}
+		
+		// if compression is set use it
+		let compression: Compression
+		if archiveCompression != nil {
+			compression = archiveCompression!
+		}
+		else {
+			// otherwise, attempt to use the file extension to determine the compression algorithm
+			switch path.pathExtension.lowercaseString {
+			case "lz4"  :	compression = Compression.LZ4
+			case "zlib" :	compression = Compression.ZLIB
+			case "lzma" :	compression = Compression.LZMA
+			case "lzfse":	compression = Compression.LZFSE
+			default:		return nil
+			}
+		}
+		
+		// finally, attempt to uncompress the data and initalize self
+		if let uncompressedData = compressedData.uncompressedDataUsingCompression(compression) {
+			self.init(data: uncompressedData)
+		}
+		else {
+			return nil
+		}
+	}
+	
 	
 	/// Returns a NSData object created by compressing the receiver using the given compression algorithm.
 	///
