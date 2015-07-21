@@ -22,8 +22,8 @@ class NSData_CompressionTests: XCTestCase {
 	}
 	
 	
-	/// init(contentsOfArchive: usingCompression:) tests
-	func test_initContentsOfArchiveUsingCompression() {
+	/// init(contentsOfArchive: usedCompression:) tests
+	func test_initContentsOfArchiveUsedCompression() {
 		
 		let verifiedData = testDataOfType("txt")
 		guard let archivePath = NSBundle.mainBundle().pathForResource("TestData", ofType: "lzfse") else {
@@ -32,7 +32,7 @@ class NSData_CompressionTests: XCTestCase {
 		}
 		
 		
-		// Test explicit compression NSData(contentsOfArchive: usingCompression:)
+		// Test explicit compression NSData(contentsOfArchive: usedCompression:)
 		let explicitData = NSData(contentsOfArchive: archivePath, usedCompression: Compression.LZFSE)
 		XCTAssertTrue(explicitData!.isEqualToData(verifiedData))
 		
