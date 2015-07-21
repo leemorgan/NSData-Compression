@@ -43,7 +43,7 @@ extension NSData {
 	/// - Parameter path: The absolute path of the file from which to read data
 	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path`. Returns `nil` if decompression fails.
 	convenience init?(contentsOfArchive path: String) {
-		self.init(contentsOfArchive: path, usingCompression: nil)
+		self.init(contentsOfArchive: path, usedCompression: nil)
 	}
 	
 	
@@ -52,9 +52,9 @@ extension NSData {
 	///     let data = NSData(contentsOfArchive: absolutePathToFile, usingCompression: Compression.LZFSE)
 	///
 	/// - Parameter path: The absolute path of the file from which to read data
-	/// - Parameter compression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
+	/// - Parameter usedCompression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
 	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
-	convenience init?(contentsOfArchive path: String, usingCompression archiveCompression: Compression?) {
+	convenience init?(contentsOfArchive path: String, usedCompression: Compression?) {
 		
 		// read in the compressed data from disk
 		guard let compressedData = NSData(contentsOfFile: path) else {
@@ -63,8 +63,8 @@ extension NSData {
 		
 		// if compression is set use it
 		let compression: Compression
-		if archiveCompression != nil {
-			compression = archiveCompression!
+		if usedCompression != nil {
+			compression = usedCompression!
 		}
 		else {
 			// otherwise, attempt to use the file extension to determine the compression algorithm

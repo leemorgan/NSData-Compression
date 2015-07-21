@@ -33,11 +33,11 @@ class NSData_CompressionTests: XCTestCase {
 		
 		
 		// Test explicit compression NSData(contentsOfArchive: usingCompression:)
-		let explicitData = NSData(contentsOfArchive: archivePath, usingCompression: Compression.LZFSE)
+		let explicitData = NSData(contentsOfArchive: archivePath, usedCompression: Compression.LZFSE)
 		XCTAssertTrue(explicitData!.isEqualToData(verifiedData))
 		
 		// Test incorrect explicit compression
-		let incorrectData = NSData(contentsOfArchive: archivePath, usingCompression: Compression.LZ4)
+		let incorrectData = NSData(contentsOfArchive: archivePath, usedCompression: Compression.LZ4)
 		XCTAssertNil(incorrectData)
 		
 		// Test implicit compression NSData(contentsOfArchive:)
