@@ -21,6 +21,17 @@ Returns a NSData object created by compressing the receiver using the given comp
     func uncompressedDataUsingCompression(compression: Compression) -> NSData?
 Returns a NSData object by uncompressing the receiver using the given compression algorithm.
 
+<br>
+
+    convenience init?(contentsOfArchive path: String, usingCompression archiveCompression: Compression?)
+Returns a NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm.
+
+<br>
+
+    convenience init?(contentsOfArchive path: String)
+Returns a NSData object initialized by decompressing the data from the file specified by `path`. Attempts to determine the appropriate decompression algorithm using the path's extension.
+
+This method is equivalent to `NSData(contentsOfArchive:usingCompression:)` with `nil compression`
 
 Documentation
 =====
