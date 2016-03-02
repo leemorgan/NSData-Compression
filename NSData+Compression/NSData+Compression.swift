@@ -68,7 +68,7 @@ extension NSData {
 		}
 		else {
 			// otherwise, attempt to use the file extension to determine the compression algorithm
-			switch path.pathExtension.lowercaseString {
+			switch (path as NSString).pathExtension.lowercaseString {
 			case "lz4"  :	compression = Compression.LZ4
 			case "zlib" :	compression = Compression.ZLIB
 			case "lzma" :	compression = Compression.LZMA
