@@ -19,19 +19,19 @@ import Compression
 enum Compression {
 	
 	/// Fast compression
-	case LZ4
+	case lz4
 	
 	/// Balanced between speed and compression
-	case ZLIB
+	case zlib
 	
 	/// High compression
-	case LZMA
+	case lzma
 	
 	/// Apple-specific high performance compression. Faster and better compression than ZLIB, but slower than LZ4 and does not compress as well as LZMA.
-	case LZFSE
+	case lzfse
 }
 
-extension NSData {
+extension Data {
 	
 	
 	/// Returns a NSData object initialized by decompressing the data from the file specified by `path`. Attempts to determine the appropriate decompression algorithm using the path's extension.
@@ -42,7 +42,7 @@ extension NSData {
 	///
 	/// - Parameter path: The absolute path of the file from which to read data
 	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path`. Returns `nil` if decompression fails.
-	convenience init?(contentsOfArchive path: String) {
+	init?(contentsOfArchive path: String) {
 		self.init(contentsOfArchive: path, usedCompression: nil)
 	}
 	
@@ -54,10 +54,10 @@ extension NSData {
 	/// - Parameter path: The absolute path of the file from which to read data
 	/// - Parameter usedCompression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
 	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
-	convenience init?(contentsOfArchive path: String, usedCompression: Compression?) {
+	init?(contentsOfArchive path: String, usedCompression: Compression?) {
 		
 		// read in the compressed data from disk
-		guard let compressedData = NSData(contentsOfFile: path) else {
+		guard let compressedData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
 			return nil
 		}
 		
@@ -68,18 +68,18 @@ extension NSData {
 		}
 		else {
 			// otherwise, attempt to use the file extension to determine the compression algorithm
-			switch (path as NSString).pathExtension.lowercaseString {
-			case "lz4"  :	compression = Compression.LZ4
-			case "zlib" :	compression = Compression.ZLIB
-			case "lzma" :	compression = Compression.LZMA
-			case "lzfse":	compression = Compression.LZFSE
+			switch (path as NSString).pathExtension.lowercased() {
+			case "lz4"  :	compression = Compression.lz4
+			case "zlib" :	compression = Compression.zlib
+			case "lzma" :	compression = Compression.lzma
+			case "lzfse":	compression = Compression.lzfse
 			default:		return nil
 			}
 		}
 		
 		// finally, attempt to uncompress the data and initalize self
 		if let uncompressedData = compressedData.uncompressedDataUsingCompression(compression) {
-			self.init(data: uncompressedData)
+			(self as NSData).init(data: uncompressedData)
 		}
 		else {
 			return nil
@@ -93,8 +93,8 @@ extension NSData {
 	///
 	/// - Parameter compression: Algorithm to use during compression
 	/// - Returns: A NSData object created by encoding the receiver's contents using the provided compression algorithm. Returns nil if compression fails or if the receiver's length is 0.
-	func compressedDataUsingCompression(compression: Compression) -> NSData? {
-		return self.dataUsingCompression(compression, operation: .Encode)
+	func compressedDataUsingCompression(_ compression: Compression) -> Data? {
+		return self.dataUsingCompression(compression, operation: .encode)
 	}
 	
 	/// Returns a NSData object by uncompressing the receiver using the given compression algorithm.
@@ -103,45 +103,45 @@ extension NSData {
 	///
 	/// - Parameter compression: Algorithm to use during decompression
 	/// - Returns: A NSData object created by decoding the receiver's contents using the provided compression algorithm. Returns nil if decompression fails or if the receiver's length is 0.
-	func uncompressedDataUsingCompression(compression: Compression) -> NSData? {
-		return self.dataUsingCompression(compression, operation: .Decode)
+	func uncompressedDataUsingCompression(_ compression: Compression) -> Data? {
+		return self.dataUsingCompression(compression, operation: .decode)
 	}
 	
 	
-	private enum CompressionOperation {
-		case Encode
-		case Decode
+	fileprivate enum CompressionOperation {
+		case encode
+		case decode
 	}
 	
-	private func dataUsingCompression(compression: Compression, operation: CompressionOperation) -> NSData? {
+	fileprivate func dataUsingCompression(_ compression: Compression, operation: CompressionOperation) -> Data? {
 		
-		guard self.length > 0 else {
+		guard self.count > 0 else {
 			return nil
 		}
 		
-		let streamPtr = UnsafeMutablePointer<compression_stream>.alloc(1)
-		var stream = streamPtr.memory
+		let streamPtr = UnsafeMutablePointer<compression_stream>(allocatingCapacity: 1)
+		var stream = streamPtr.pointee
 		var status : compression_status
 		var op : compression_stream_operation
 		var flags : Int32
 		var algorithm : compression_algorithm
 		
 		switch compression {
-		case .LZ4:
+		case .lz4:
 			algorithm = COMPRESSION_LZ4
-		case .LZFSE:
+		case .lzfse:
 			algorithm = COMPRESSION_LZFSE
-		case .LZMA:
+		case .lzma:
 			algorithm = COMPRESSION_LZMA
-		case .ZLIB:
+		case .zlib:
 			algorithm = COMPRESSION_ZLIB
 		}
 		
 		switch operation {
-		case .Encode:
+		case .encode:
 			op = COMPRESSION_STREAM_ENCODE
 			flags = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
-		case .Decode:
+		case .decode:
 			op = COMPRESSION_STREAM_DECODE
 			flags = 0
 		}
@@ -154,12 +154,12 @@ extension NSData {
 		
 		// setup the stream's source
 		stream.src_ptr = UnsafePointer<UInt8>(bytes)
-		stream.src_size = length
+		stream.src_size = count
 		
 		// setup the stream's output buffer
 		// we use a temporary buffer to store the data as it's compressed
 		let dstBufferSize : size_t = 4096
-		let dstBufferPtr = UnsafeMutablePointer<UInt8>.alloc(dstBufferSize)
+		let dstBufferPtr = UnsafeMutablePointer<UInt8>(allocatingCapacity: dstBufferSize)
 		stream.dst_ptr = dstBufferPtr
 		stream.dst_size = dstBufferSize
 		// and we stroe the output in a mutable data object
@@ -176,7 +176,7 @@ extension NSData {
 					// Output buffer full...
 					
 					// Write out to mutableData
-					outputData.appendBytes(dstBufferPtr, length: dstBufferSize)
+					outputData.append(dstBufferPtr, length: dstBufferSize)
 					
 					// Re-use dstBuffer
 					stream.dst_ptr = dstBufferPtr
@@ -186,7 +186,7 @@ extension NSData {
 			case COMPRESSION_STATUS_END.rawValue:
 				// We are done, just write out the output buffer if there's anything in it
 				if stream.dst_ptr > dstBufferPtr {
-					outputData.appendBytes(dstBufferPtr, length: stream.dst_ptr - dstBufferPtr)
+					outputData.append(dstBufferPtr, length: stream.dst_ptr - dstBufferPtr)
 				}
 		
 			case COMPRESSION_STATUS_ERROR.rawValue:
@@ -200,7 +200,7 @@ extension NSData {
 		
 		compression_stream_destroy(&stream)
 		
-		return outputData.copy() as? NSData
+		return outputData.copy() as? Data
 	}
 	
 }
