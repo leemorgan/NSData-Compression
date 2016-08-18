@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import NSData_Compression
+@testable import Data_Compression
 
 class Data_CompressionTests: XCTestCase {
 	
