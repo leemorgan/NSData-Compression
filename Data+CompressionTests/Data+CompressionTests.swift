@@ -9,7 +9,7 @@
 import XCTest
 @testable import NSData_Compression
 
-class NSData_CompressionTests: XCTestCase {
+class Data_CompressionTests: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()

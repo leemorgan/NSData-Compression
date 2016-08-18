@@ -394,7 +394,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Data+CompressionTests/DummyApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-Compression";
+				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.Data-Compression";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
@@ -407,7 +407,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Data+CompressionTests/DummyApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-Compression";
+				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.Data-Compression";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
