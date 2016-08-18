@@ -51,9 +51,9 @@
 		9B601B181B5ACF92008C2BDA /* TestData.lzma */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.lzma; path = TestData/TestData.lzma; sourceTree = "<group>"; };
 		9B601B191B5ACF92008C2BDA /* TestData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestData.txt; path = TestData/TestData.txt; sourceTree = "<group>"; };
 		9B601B1A1B5ACF92008C2BDA /* TestData.zlib */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.zlib; path = TestData/TestData.zlib; sourceTree = "<group>"; };
-		9B601B251B5AD09A008C2BDA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../NSData+CompressionTests/DummyApp/AppDelegate.swift"; sourceTree = "<group>"; };
-		9B601B261B5AD09A008C2BDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../NSData+CompressionTests/DummyApp/Info.plist"; sourceTree = "<group>"; };
-		9B601B2C1B5AD0A1008C2BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "NSData+CompressionTests/DummyApp/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		9B601B251B5AD09A008C2BDA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9B601B261B5AD09A008C2BDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B601B2C1B5AD0A1008C2BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Data+CompressionTests/DummyApp/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				9B601B0E1B5ACEE3008C2BDA /* Data+Compression */,
-				9B601AEF1B5ACE9A008C2BDA /* NSData+CompressionTests */,
+				9B601AEF1B5ACE9A008C2BDA /* Data+CompressionTests */,
 				9B601ADE1B5ACE9A008C2BDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,17 +102,17 @@
 				9B601B261B5AD09A008C2BDA /* Info.plist */,
 			);
 			name = "Dummy App";
-			path = "../NSData+Compression";
+			path = DummyApp;
 			sourceTree = "<group>";
 		};
-		9B601AEF1B5ACE9A008C2BDA /* NSData+CompressionTests */ = {
+		9B601AEF1B5ACE9A008C2BDA /* Data+CompressionTests */ = {
 			isa = PBXGroup;
 			children = (
 				9B601AF01B5ACE9A008C2BDA /* Data+CompressionTests.swift */,
 				9B601AFB1B5ACEA7008C2BDA /* TestData */,
 				9B601B121B5ACF04008C2BDA /* Supporting Files */,
 			);
-			path = "NSData+CompressionTests";
+			path = "Data+CompressionTests";
 			sourceTree = "<group>";
 		};
 		9B601AFB1B5ACEA7008C2BDA /* TestData */ = {
@@ -392,7 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "NSData+CompressionTests/DummyApp/Info.plist";
+				INFOPLIST_FILE = "Data+CompressionTests/DummyApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-Compression";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,7 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "NSData+CompressionTests/DummyApp/Info.plist";
+				INFOPLIST_FILE = "Data+CompressionTests/DummyApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-Compression";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,7 +419,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "NSData+CompressionTests/Info.plist";
+				INFOPLIST_FILE = "Data+CompressionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-CompressionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -433,7 +433,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "NSData+CompressionTests/Info.plist";
+				INFOPLIST_FILE = "Data+CompressionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-CompressionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
