@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  NSData+Compression
+//  Data+Compression
 //
 //  Created by Lee Morgan on 7/18/15.
 //  Copyright © 2015 Lee Morgan. All rights reserved.

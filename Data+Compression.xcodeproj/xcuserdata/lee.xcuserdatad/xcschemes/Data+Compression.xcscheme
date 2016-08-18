@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B601ADC1B5ACE9A008C2BDA"
-               BuildableName = "NSData+Compression.app"
-               BlueprintName = "NSData+Compression"
-               ReferencedContainer = "container:NSData+Compression.xcodeproj">
+               BuildableName = "Data+Compression.app"
+               BlueprintName = "Data+Compression"
+               ReferencedContainer = "container:Data+Compression.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B601AEB1B5ACE9A008C2BDA"
-               BuildableName = "NSData+CompressionTests.xctest"
-               BlueprintName = "NSData+CompressionTests"
-               ReferencedContainer = "container:NSData+Compression.xcodeproj">
+               BuildableName = "Data+CompressionTests.xctest"
+               BlueprintName = "Data+CompressionTests"
+               ReferencedContainer = "container:Data+Compression.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B601ADC1B5ACE9A008C2BDA"
-            BuildableName = "NSData+Compression.app"
-            BlueprintName = "NSData+Compression"
-            ReferencedContainer = "container:NSData+Compression.xcodeproj">
+            BuildableName = "Data+Compression.app"
+            BlueprintName = "Data+Compression"
+            ReferencedContainer = "container:Data+Compression.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B601ADC1B5ACE9A008C2BDA"
-            BuildableName = "NSData+Compression.app"
-            BlueprintName = "NSData+Compression"
-            ReferencedContainer = "container:NSData+Compression.xcodeproj">
+            BuildableName = "Data+Compression.app"
+            BlueprintName = "Data+Compression"
+            ReferencedContainer = "container:Data+Compression.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B601ADC1B5ACE9A008C2BDA"
-            BuildableName = "NSData+Compression.app"
-            BlueprintName = "NSData+Compression"
-            ReferencedContainer = "container:NSData+Compression.xcodeproj">
+            BuildableName = "Data+Compression.app"
+            BlueprintName = "Data+Compression"
+            ReferencedContainer = "container:Data+Compression.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

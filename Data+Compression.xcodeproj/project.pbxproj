@@ -35,7 +35,7 @@
 			containerPortal = 9B601AD51B5ACE9A008C2BDA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9B601ADC1B5ACE9A008C2BDA;
-			remoteInfo = "NSData+Compression";
+			remoteInfo = "Data+Compression";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -170,7 +170,7 @@
 			dependencies = (
 			);
 			name = "Data+Compression";
-			productName = "NSData+Compression";
+			productName = "Data+Compression";
 			productReference = 9B601ADD1B5ACE9A008C2BDA /* Data+Compression.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -188,7 +188,7 @@
 				9B601AEE1B5ACE9A008C2BDA /* PBXTargetDependency */,
 			);
 			name = "Data+CompressionTests";
-			productName = "NSData+CompressionTests";
+			productName = "Data+CompressionTests";
 			productReference = 9B601AEC1B5ACE9A008C2BDA /* Data+CompressionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -421,7 +421,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Data+CompressionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-CompressionTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.Data-CompressionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Data+Compression.app/Contents/MacOS/Data+Compression";
@@ -435,7 +435,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Data+CompressionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-CompressionTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.Data-CompressionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Data+Compression.app/Contents/MacOS/Data+Compression";
