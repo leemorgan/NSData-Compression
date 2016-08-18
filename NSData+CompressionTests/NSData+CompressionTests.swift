@@ -34,7 +34,7 @@ class NSData_CompressionTests: XCTestCase {
 		
 		// Test explicit compression NSData(contentsOfArchive: usedCompression:)
 		let explicitData = Data(contentsOfArchive: archivePath, usedCompression: Compression.lzfse)
-		XCTAssertTrue(explicitData! == verifiedData)
+		XCTAssertEqual(explicitData!, verifiedData)
 		
 		// Test incorrect explicit compression
 		let incorrectData = Data(contentsOfArchive: archivePath, usedCompression: Compression.lz4)
@@ -42,7 +42,7 @@ class NSData_CompressionTests: XCTestCase {
 		
 		// Test implicit compression NSData(contentsOfArchive:)
 		let implicitData = Data(contentsOfArchive: archivePath)
-		XCTAssertTrue(implicitData! == verifiedData)
+		XCTAssertEqual(implicitData!, verifiedData)
 	}
 	
 	
@@ -57,22 +57,22 @@ class NSData_CompressionTests: XCTestCase {
 		// Test LZ4
 		compressedData = testDataOfType("lz4")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lz4)
-		XCTAssertTrue(uncompressedData! == verifiedData)
+		XCTAssertEqual(uncompressedData!, verifiedData)
 		
 		// Test ZLIB
 		compressedData = testDataOfType("zlib")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.zlib)
-		XCTAssertTrue(uncompressedData! == verifiedData)
+		XCTAssertEqual(uncompressedData!, verifiedData)
 		
 		// Test LZMA
 		compressedData = testDataOfType("lzma")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzma)
-		XCTAssertTrue(uncompressedData! == verifiedData)
+		XCTAssertEqual(uncompressedData!, verifiedData)
 		
 		// Test LZFSE
 		compressedData = testDataOfType("lzfse")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzfse)
-		XCTAssertTrue(uncompressedData! == verifiedData)
+		XCTAssertEqual(uncompressedData!, verifiedData)
 	}
 	
 	
@@ -86,22 +86,22 @@ class NSData_CompressionTests: XCTestCase {
 		// Test LZ4
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lz4)
 		verifiedData = testDataOfType("lz4")
-		XCTAssertTrue(compressedData! == verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData)
 		
 		// Test ZLIB
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.zlib)
 		verifiedData = testDataOfType("zlib")
-		XCTAssertTrue(compressedData! == verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData)
 		
 		// Test LZMA
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lzma)
 		verifiedData = testDataOfType("lzma")
-		XCTAssertTrue(compressedData! == verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData)
 		
 		// Test LZFSE
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lzfse)
 		verifiedData = testDataOfType("lzfse")
-		XCTAssertTrue(compressedData! == verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData)
 	}
 	
 	
