@@ -110,28 +110,32 @@ class NSData_CompressionTests: XCTestCase {
 		
 		let testString = "Hello World"
 		
-		guard let testStringData = testString.data(using: String.Encoding.utf8) else {
+		let encoding = String.Encoding.utf8
+		
+		guard let testStringData = testString.data(using: encoding) else {
 			assertionFailure("FATAL ERROR: Failed convert string to data")
 			exit(EXIT_FAILURE)
 		}
 		
-		guard let compressedData = testStringData.compressedDataUsingCompression(Compression.lzfse) else {
+		let compression = Compression.lzfse
+		
+		guard let compressedData = testStringData.compressedDataUsingCompression(compression) else {
 			assertionFailure("FATAL ERROR: Failed to compress data")
 			exit(EXIT_FAILURE)
 		}
 		
-		guard let uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzfse) else {
+		guard let uncompressedData = compressedData.uncompressedDataUsingCompression(compression) else {
 			assertionFailure("FATAL ERROR: Failed to uncompress data")
 			exit(EXIT_FAILURE)
 		}
 		
-		guard let uncompressedString = NSString(bytes: (uncompressedData as NSData).bytes, length: uncompressedData.count, encoding: String.Encoding.utf8.rawValue) else {
+		guard let uncompressedString = String(data: uncompressedData, encoding: encoding) else {
 			assertionFailure("FATAL ERROR: Failed to convert to string")
 			exit(EXIT_FAILURE)
 		}
 		
 		print("\(testString) == \(uncompressedString)")
-		XCTAssertEqual(uncompressedString as String, testString)
+		XCTAssertEqual(uncompressedString, testString)
 	}
 	
 	
