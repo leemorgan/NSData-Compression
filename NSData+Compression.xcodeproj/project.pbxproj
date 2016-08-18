@@ -51,8 +51,8 @@
 		9B601B181B5ACF92008C2BDA /* TestData.lzma */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.lzma; path = TestData/TestData.lzma; sourceTree = "<group>"; };
 		9B601B191B5ACF92008C2BDA /* TestData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestData.txt; path = TestData/TestData.txt; sourceTree = "<group>"; };
 		9B601B1A1B5ACF92008C2BDA /* TestData.zlib */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.zlib; path = TestData/TestData.zlib; sourceTree = "<group>"; };
-		9B601B251B5AD09A008C2BDA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "NSData+CompressionTests/DummyApp/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
-		9B601B261B5AD09A008C2BDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "NSData+CompressionTests/DummyApp/Info.plist"; sourceTree = SOURCE_ROOT; };
+		9B601B251B5AD09A008C2BDA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../NSData+CompressionTests/DummyApp/AppDelegate.swift"; sourceTree = "<group>"; };
+		9B601B261B5AD09A008C2BDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../NSData+CompressionTests/DummyApp/Info.plist"; sourceTree = "<group>"; };
 		9B601B2C1B5AD0A1008C2BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "NSData+CompressionTests/DummyApp/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
