@@ -79,7 +79,7 @@ extension Data {
 		}
 		
 		// finally, attempt to uncompress the data and initalize self
-		if let uncompressedData = compressedData.uncompressedDataUsingCompression(compression) {
+		if let uncompressedData = compressedData.uncompressed(using: compression) {
 			self = uncompressedData
 		}
 		else {
@@ -90,22 +90,22 @@ extension Data {
 	
 	/// Returns a Data object created by compressing the receiver using the given compression algorithm.
 	///
-	///     let compressedData = someData.compressedDataUsingCompression(Compression.lzfse)
+	///     let compressedData = someData.compressed(using: Compression.lzfse)
 	///
-	/// - Parameter compression: Algorithm to use during compression
+	/// - Parameter using: Algorithm to use during compression
 	/// - Returns: A Data object created by encoding the receiver's contents using the provided compression algorithm. Returns nil if compression fails or if the receiver's length is 0.
-	func compressedDataUsingCompression(_ compression: Compression) -> Data? {
-		return self.dataUsingCompression(compression, operation: .encode)
+	func compressed(using compression: Compression) -> Data? {
+		return self.data(using: compression, operation: .encode)
 	}
 	
 	/// Returns a Data object by uncompressing the receiver using the given compression algorithm.
 	///
-	///     let uncompressedData = someCompressedData.uncompressedDataUsingCompression(Compression.lzfse)
+	///     let uncompressedData = someCompressedData.uncompressed(using: Compression.lzfse)
 	///
-	/// - Parameter compression: Algorithm to use during decompression
+	/// - Parameter using: Algorithm to use during decompression
 	/// - Returns: A Data object created by decoding the receiver's contents using the provided compression algorithm. Returns nil if decompression fails or if the receiver's length is 0.
-	func uncompressedDataUsingCompression(_ compression: Compression) -> Data? {
-		return self.dataUsingCompression(compression, operation: .decode)
+	func uncompressed(using compression: Compression) -> Data? {
+		return self.data(using: compression, operation: .decode)
 	}
 	
 	
@@ -114,7 +114,7 @@ extension Data {
 		case decode
 	}
 	
-	private func dataUsingCompression(_ compression: Compression, operation: CompressionOperation) -> Data? {
+	private func data(using compression: Compression, operation: CompressionOperation) -> Data? {
 		
 		guard self.count > 0 else {
 			return nil

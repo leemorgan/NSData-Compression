@@ -56,22 +56,22 @@ class Data_CompressionTests: XCTestCase {
 		
 		// Test LZ4
 		compressedData = testDataOfType("lz4")
-		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lz4)
+		uncompressedData = compressedData.uncompressed(using: Compression.lz4)
 		XCTAssertEqual(uncompressedData!, verifiedData)
 		
 		// Test ZLIB
 		compressedData = testDataOfType("zlib")
-		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.zlib)
+		uncompressedData = compressedData.uncompressed(using: Compression.zlib)
 		XCTAssertEqual(uncompressedData!, verifiedData)
 		
 		// Test LZMA
 		compressedData = testDataOfType("lzma")
-		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzma)
+		uncompressedData = compressedData.uncompressed(using: Compression.lzma)
 		XCTAssertEqual(uncompressedData!, verifiedData)
 		
 		// Test LZFSE
 		compressedData = testDataOfType("lzfse")
-		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzfse)
+		uncompressedData = compressedData.uncompressed(using: Compression.lzfse)
 		XCTAssertEqual(uncompressedData!, verifiedData)
 	}
 	
@@ -84,22 +84,22 @@ class Data_CompressionTests: XCTestCase {
 		var verifiedData : Data
 		
 		// Test LZ4
-		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lz4)
+		compressedData = uncompressedData.compressed(using: Compression.lz4)
 		verifiedData = testDataOfType("lz4")
 		XCTAssertEqual(compressedData!, verifiedData)
 		
 		// Test ZLIB
-		compressedData = uncompressedData.compressedDataUsingCompression(Compression.zlib)
+		compressedData = uncompressedData.compressed(using: Compression.zlib)
 		verifiedData = testDataOfType("zlib")
 		XCTAssertEqual(compressedData!, verifiedData)
 		
 		// Test LZMA
-		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lzma)
+		compressedData = uncompressedData.compressed(using: Compression.lzma)
 		verifiedData = testDataOfType("lzma")
 		XCTAssertEqual(compressedData!, verifiedData)
 		
 		// Test LZFSE
-		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lzfse)
+		compressedData = uncompressedData.compressed(using: Compression.lzfse)
 		verifiedData = testDataOfType("lzfse")
 		XCTAssertEqual(compressedData!, verifiedData)
 	}
@@ -119,12 +119,12 @@ class Data_CompressionTests: XCTestCase {
 		
 		let compression = Compression.lzfse
 		
-		guard let compressedData = testStringData.compressedDataUsingCompression(compression) else {
+		guard let compressedData = testStringData.compressed(using: compression) else {
 			assertionFailure("FATAL ERROR: Failed to compress data")
 			exit(EXIT_FAILURE)
 		}
 		
-		guard let uncompressedData = compressedData.uncompressedDataUsingCompression(compression) else {
+		guard let uncompressedData = compressedData.uncompressed(using: compression) else {
 			assertionFailure("FATAL ERROR: Failed to uncompress data")
 			exit(EXIT_FAILURE)
 		}
