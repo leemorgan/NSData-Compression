@@ -1,6 +1,6 @@
 //
-//  NSData+CompressionTests.swift
-//  NSData+CompressionTests
+//  Data+CompressionTests.swift
+//  Data+CompressionTests
 //
 //  Created by Lee Morgan on 7/18/15.
 //  Copyright © 2015 Lee Morgan. All rights reserved.

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B601AF11B5ACE9A008C2BDA /* NSData+CompressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B601AF01B5ACE9A008C2BDA /* NSData+CompressionTests.swift */; };
+		9B601AF11B5ACE9A008C2BDA /* Data+CompressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B601AF01B5ACE9A008C2BDA /* Data+CompressionTests.swift */; };
 		9B601AFE1B5ACEBD008C2BDA /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B601AFD1B5ACEBD008C2BDA /* libcompression.tbd */; };
-		9B601B141B5ACF85008C2BDA /* NSData+Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B601B131B5ACF85008C2BDA /* NSData+Compression.swift */; };
-		9B601B151B5ACF85008C2BDA /* NSData+Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B601B131B5ACF85008C2BDA /* NSData+Compression.swift */; };
+		9B601B141B5ACF85008C2BDA /* Data+Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B601B131B5ACF85008C2BDA /* Data+Compression.swift */; };
+		9B601B151B5ACF85008C2BDA /* Data+Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B601B131B5ACF85008C2BDA /* Data+Compression.swift */; };
 		9B601B1B1B5ACF92008C2BDA /* TestData.lz4 in Resources */ = {isa = PBXBuildFile; fileRef = 9B601B161B5ACF92008C2BDA /* TestData.lz4 */; };
 		9B601B1C1B5ACF92008C2BDA /* TestData.lz4 in Resources */ = {isa = PBXBuildFile; fileRef = 9B601B161B5ACF92008C2BDA /* TestData.lz4 */; };
 		9B601B1D1B5ACF92008C2BDA /* TestData.lzfse in Resources */ = {isa = PBXBuildFile; fileRef = 9B601B171B5ACF92008C2BDA /* TestData.lzfse */; };
@@ -42,10 +42,10 @@
 /* Begin PBXFileReference section */
 		9B601ADD1B5ACE9A008C2BDA /* Data+Compression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data+Compression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B601AEC1B5ACE9A008C2BDA /* Data+CompressionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Data+CompressionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B601AF01B5ACE9A008C2BDA /* NSData+CompressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+CompressionTests.swift"; sourceTree = "<group>"; };
+		9B601AF01B5ACE9A008C2BDA /* Data+CompressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CompressionTests.swift"; sourceTree = "<group>"; };
 		9B601AF21B5ACE9A008C2BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B601AFD1B5ACEBD008C2BDA /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
-		9B601B131B5ACF85008C2BDA /* NSData+Compression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+Compression.swift"; path = "NSData+Compression/NSData+Compression.swift"; sourceTree = "<group>"; };
+		9B601B131B5ACF85008C2BDA /* Data+Compression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Data+Compression.swift"; path = "NSData+Compression/Data+Compression.swift"; sourceTree = "<group>"; };
 		9B601B161B5ACF92008C2BDA /* TestData.lz4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.lz4; path = TestData/TestData.lz4; sourceTree = "<group>"; };
 		9B601B171B5ACF92008C2BDA /* TestData.lzfse */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.lzfse; path = TestData/TestData.lzfse; sourceTree = "<group>"; };
 		9B601B181B5ACF92008C2BDA /* TestData.lzma */ = {isa = PBXFileReference; lastKnownFileType = file; name = TestData.lzma; path = TestData/TestData.lzma; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		9B601AEF1B5ACE9A008C2BDA /* NSData+CompressionTests */ = {
 			isa = PBXGroup;
 			children = (
-				9B601AF01B5ACE9A008C2BDA /* NSData+CompressionTests.swift */,
+				9B601AF01B5ACE9A008C2BDA /* Data+CompressionTests.swift */,
 				9B601AFB1B5ACEA7008C2BDA /* TestData */,
 				9B601B121B5ACF04008C2BDA /* Supporting Files */,
 			);
@@ -139,7 +139,7 @@
 		9B601B0E1B5ACEE3008C2BDA /* NSData+Compression */ = {
 			isa = PBXGroup;
 			children = (
-				9B601B131B5ACF85008C2BDA /* NSData+Compression.swift */,
+				9B601B131B5ACF85008C2BDA /* Data+Compression.swift */,
 				9B601AFC1B5ACEB0008C2BDA /* Frameworks */,
 			);
 			name = "NSData+Compression";
@@ -267,7 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B601B271B5AD09A008C2BDA /* AppDelegate.swift in Sources */,
-				9B601B141B5ACF85008C2BDA /* NSData+Compression.swift in Sources */,
+				9B601B141B5ACF85008C2BDA /* Data+Compression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B601B281B5AD09A008C2BDA /* AppDelegate.swift in Sources */,
-				9B601AF11B5ACE9A008C2BDA /* NSData+CompressionTests.swift in Sources */,
-				9B601B151B5ACF85008C2BDA /* NSData+Compression.swift in Sources */,
+				9B601AF11B5ACE9A008C2BDA /* Data+CompressionTests.swift in Sources */,
+				9B601B151B5ACF85008C2BDA /* Data+Compression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
