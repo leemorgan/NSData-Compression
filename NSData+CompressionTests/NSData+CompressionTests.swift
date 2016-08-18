@@ -57,22 +57,22 @@ class NSData_CompressionTests: XCTestCase {
 		// Test LZ4
 		compressedData = testDataOfType("lz4")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lz4)
-		XCTAssertTrue(uncompressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(uncompressedData! == verifiedData)
 		
 		// Test ZLIB
 		compressedData = testDataOfType("zlib")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.zlib)
-		XCTAssertTrue(uncompressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(uncompressedData! == verifiedData)
 		
 		// Test LZMA
 		compressedData = testDataOfType("lzma")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzma)
-		XCTAssertTrue(uncompressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(uncompressedData! == verifiedData)
 		
 		// Test LZFSE
 		compressedData = testDataOfType("lzfse")
 		uncompressedData = compressedData.uncompressedDataUsingCompression(Compression.lzfse)
-		XCTAssertTrue(uncompressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(uncompressedData! == verifiedData)
 	}
 	
 	
@@ -86,22 +86,22 @@ class NSData_CompressionTests: XCTestCase {
 		// Test LZ4
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lz4)
 		verifiedData = testDataOfType("lz4")
-		XCTAssertTrue(compressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(compressedData! == verifiedData)
 		
 		// Test ZLIB
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.zlib)
 		verifiedData = testDataOfType("zlib")
-		XCTAssertTrue(compressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(compressedData! == verifiedData)
 		
 		// Test LZMA
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lzma)
 		verifiedData = testDataOfType("lzma")
-		XCTAssertTrue(compressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(compressedData! == verifiedData)
 		
 		// Test LZFSE
 		compressedData = uncompressedData.compressedDataUsingCompression(Compression.lzfse)
 		verifiedData = testDataOfType("lzfse")
-		XCTAssertTrue(compressedData!.isEqual(to: verifiedData))
+		XCTAssertTrue(compressedData! == verifiedData)
 	}
 	
 	
@@ -125,13 +125,13 @@ class NSData_CompressionTests: XCTestCase {
 			exit(EXIT_FAILURE)
 		}
 		
-		guard let uncompressedString = NSString(bytes: (uncompressedData as NSData).bytes, length: uncompressedData.count, encoding: String.Encoding.utf8) else {
+		guard let uncompressedString = NSString(bytes: (uncompressedData as NSData).bytes, length: uncompressedData.count, encoding: String.Encoding.utf8.rawValue) else {
 			assertionFailure("FATAL ERROR: Failed to convert to string")
 			exit(EXIT_FAILURE)
 		}
 		
 		print("\(testString) == \(uncompressedString)")
-		XCTAssertEqual(uncompressedString, testString)
+		XCTAssertEqual(uncompressedString as String, testString)
 	}
 	
 	

@@ -79,7 +79,7 @@ extension Data {
 		
 		// finally, attempt to uncompress the data and initalize self
 		if let uncompressedData = compressedData.uncompressedDataUsingCompression(compression) {
-			(self as NSData).init(data: uncompressedData)
+			self = uncompressedData
 		}
 		else {
 			return nil
@@ -119,7 +119,7 @@ extension Data {
 			return nil
 		}
 		
-		let streamPtr = UnsafeMutablePointer<compression_stream>(allocatingCapacity: 1)
+		let streamPtr = UnsafeMutablePointer<compression_stream>.allocate(capacity: 1)
 		var stream = streamPtr.pointee
 		var status : compression_status
 		var op : compression_stream_operation
@@ -153,54 +153,58 @@ extension Data {
 		}
 		
 		// setup the stream's source
-		stream.src_ptr = UnsafePointer<UInt8>(bytes)
-		stream.src_size = count
-		
-		// setup the stream's output buffer
-		// we use a temporary buffer to store the data as it's compressed
-		let dstBufferSize : size_t = 4096
-		let dstBufferPtr = UnsafeMutablePointer<UInt8>(allocatingCapacity: dstBufferSize)
-		stream.dst_ptr = dstBufferPtr
-		stream.dst_size = dstBufferSize
-		// and we stroe the output in a mutable data object
-		let outputData = NSMutableData()
-		
-		
-		repeat {
-			status = compression_stream_process(&stream, flags)
+		let outputData = withUnsafeBytes { (bytes: UnsafePointer<UInt8>) -> Data? in
+			stream.src_ptr = bytes
+			stream.src_size = count
 			
-			switch status.rawValue {
-			case COMPRESSION_STATUS_OK.rawValue:
-				// Going to call _process at least once more, so prepare for that
-				if stream.dst_size == 0 {
-					// Output buffer full...
+			// setup the stream's output buffer
+			// we use a temporary buffer to store the data as it's compressed
+			let dstBufferSize : size_t = 4096
+			let dstBufferPtr = UnsafeMutablePointer<UInt8>.allocate(capacity: dstBufferSize)
+			stream.dst_ptr = dstBufferPtr
+			stream.dst_size = dstBufferSize
+			// and we store the output in a mutable data object
+			var outputData = Data()
+			
+			
+			repeat {
+				status = compression_stream_process(&stream, flags)
+				
+				switch status {
+				case COMPRESSION_STATUS_OK:
+					// Going to call _process at least once more, so prepare for that
+					if stream.dst_size == 0 {
+						// Output buffer full...
+						
+						// Write out to mutableData
+						outputData.append(dstBufferPtr, count: dstBufferSize)
+						
+						// Re-use dstBuffer
+						stream.dst_ptr = dstBufferPtr
+						stream.dst_size = dstBufferSize
+					}
 					
-					// Write out to mutableData
-					outputData.append(dstBufferPtr, length: dstBufferSize)
+				case COMPRESSION_STATUS_END:
+					// We are done, just write out the output buffer if there's anything in it
+					if stream.dst_ptr > dstBufferPtr {
+						outputData.append(dstBufferPtr, count: stream.dst_ptr - dstBufferPtr)
+					}
+			
+				case COMPRESSION_STATUS_ERROR:
+					return nil
 					
-					// Re-use dstBuffer
-					stream.dst_ptr = dstBufferPtr
-					stream.dst_size = dstBufferSize
+				default:
+					break
 				}
 				
-			case COMPRESSION_STATUS_END.rawValue:
-				// We are done, just write out the output buffer if there's anything in it
-				if stream.dst_ptr > dstBufferPtr {
-					outputData.append(dstBufferPtr, length: stream.dst_ptr - dstBufferPtr)
-				}
-		
-			case COMPRESSION_STATUS_ERROR.rawValue:
-				return nil
-				
-			default:
-				break
-			}
+			} while status == COMPRESSION_STATUS_OK
 			
-		} while status == COMPRESSION_STATUS_OK
+			return outputData
+		}
 		
 		compression_stream_destroy(&stream)
 		
-		return outputData.copy() as? Data
+		return outputData
 	}
 	
 }
