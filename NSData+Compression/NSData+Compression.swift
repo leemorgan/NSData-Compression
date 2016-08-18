@@ -55,9 +55,10 @@ extension Data {
 	/// - Parameter usedCompression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
 	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
 	init?(contentsOfArchive path: String, usedCompression: Compression?) {
+		let pathURL = URL(fileURLWithPath: path)
 		
 		// read in the compressed data from disk
-		guard let compressedData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+		guard let compressedData = try? Data(contentsOf: pathURL) else {
 			return nil
 		}
 		
@@ -68,7 +69,7 @@ extension Data {
 		}
 		else {
 			// otherwise, attempt to use the file extension to determine the compression algorithm
-			switch (path as NSString).pathExtension.lowercased() {
+			switch pathURL.pathExtension.lowercased() {
 			case "lz4"  :	compression = Compression.lz4
 			case "zlib" :	compression = Compression.zlib
 			case "lzma" :	compression = Compression.lzma
