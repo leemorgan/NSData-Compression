@@ -1,12 +1,12 @@
 Purpose
 =====
-Compression is a category on Data that provides data compression and decompression functionality by wrapping CompressionLib, a new library available on OS 10.11 and iOS 9.0
+Compression is a set of extensions to Swift's Foundation Data type that provide data compression and decompression functionality by wrapping [libcompression](https://developer.apple.com/library/mac/documentation/Performance/Reference/Compression/), a new library available on OS 10.11 and iOS 9.0
 
 Compression is written in Swift. For the Objective-C version see [LAMCompression](https://github.com/leemorgan/NSData-LAMCompression).
 
 Installation
 =====
-To use the Compression category in an app, include the `Data+Compression.swift` file in your project.
+To use the Compression extensions in an app, include the `Data+Compression.swift` file in your project.
 
 You will also need to include the `libcompression` library in your project.
 
@@ -35,7 +35,7 @@ This method is equivalent to `Data(contentsOfArchive:usedCompression:)` with `ni
 
 Documentation
 =====
-The `Data+Compression` category is documented using standard Xcode doc comments.
+The `Data+Compression` extension is documented using standard Xcode doc comments.
 
 The project has a dummy (skeleton) app which is included to support Unit Testing with Xcode. The app itself doesn't do anything interesting at all.
 
