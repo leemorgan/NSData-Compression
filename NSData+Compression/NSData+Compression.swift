@@ -109,12 +109,12 @@ extension Data {
 	}
 	
 	
-	fileprivate enum CompressionOperation {
+	private enum CompressionOperation {
 		case encode
 		case decode
 	}
 	
-	fileprivate func dataUsingCompression(_ compression: Compression, operation: CompressionOperation) -> Data? {
+	private func dataUsingCompression(_ compression: Compression, operation: CompressionOperation) -> Data? {
 		
 		guard self.count > 0 else {
 			return nil
