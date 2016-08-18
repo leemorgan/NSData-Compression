@@ -11,10 +11,10 @@ import Compression
 
 /** Available Compression Algorithms
 
-- Compression.LZ4   : Fast compression
-- Compression.ZLIB  : Balanced between speed and compression
-- Compression.LZMA  : High compression
-- Compression.LZFSE : Apple-specific high performance compression. Faster and better compression than ZLIB, but slower than LZ4 and does not compress as well as LZMA.
+- Compression.lz4   : Fast compression
+- Compression.zlib  : Balanced between speed and compression
+- Compression.lzma  : High compression
+- Compression.lzfse : Apple-specific high performance compression. Faster and better compression than ZLIB, but slower than LZ4 and does not compress as well as LZMA.
 */
 enum Compression {
 	
@@ -34,26 +34,26 @@ enum Compression {
 extension Data {
 	
 	
-	/// Returns a NSData object initialized by decompressing the data from the file specified by `path`. Attempts to determine the appropriate decompression algorithm using the path's extension.
+	/// Returns a Data object initialized by decompressing the data from the file specified by `path`. Attempts to determine the appropriate decompression algorithm using the path's extension.
 	///
-	/// This method is equivalent to `NSData(contentsOfArchive:usingCompression:)` with `nil compression`
+	/// This method is equivalent to `Data(contentsOfArchive:usingCompression:)` with `nil compression`
 	///
-	///     let data = NSData(contentsOfArchive: absolutePathToFile)
+	///     let data = Data(contentsOfArchive: absolutePathToFile)
 	///
 	/// - Parameter path: The absolute path of the file from which to read data
-	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path`. Returns `nil` if decompression fails.
+	/// - Returns: A Data object initialized by decompressing the data from the file specified by `path`. Returns `nil` if decompression fails.
 	init?(contentsOfArchive path: String) {
 		self.init(contentsOfArchive: path, usedCompression: nil)
 	}
 	
 	
-	/// Returns a NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm.
+	/// Returns a Data object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm.
 	/// 
-	///     let data = NSData(contentsOfArchive: absolutePathToFile, usedCompression: Compression.LZFSE)
+	///     let data = Data(contentsOfArchive: absolutePathToFile, usedCompression: Compression.lzfse)
 	///
 	/// - Parameter path: The absolute path of the file from which to read data
 	/// - Parameter usedCompression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
-	/// - Returns: A NSData object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
+	/// - Returns: A Data object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
 	init?(contentsOfArchive path: String, usedCompression: Compression?) {
 		let pathURL = URL(fileURLWithPath: path)
 		
@@ -88,22 +88,22 @@ extension Data {
 	}
 	
 	
-	/// Returns a NSData object created by compressing the receiver using the given compression algorithm.
+	/// Returns a Data object created by compressing the receiver using the given compression algorithm.
 	///
-	///     let compressedData = someData.compressedDataUsingCompression(Compression.LZFSE)
+	///     let compressedData = someData.compressedDataUsingCompression(Compression.lzfse)
 	///
 	/// - Parameter compression: Algorithm to use during compression
-	/// - Returns: A NSData object created by encoding the receiver's contents using the provided compression algorithm. Returns nil if compression fails or if the receiver's length is 0.
+	/// - Returns: A Data object created by encoding the receiver's contents using the provided compression algorithm. Returns nil if compression fails or if the receiver's length is 0.
 	func compressedDataUsingCompression(_ compression: Compression) -> Data? {
 		return self.dataUsingCompression(compression, operation: .encode)
 	}
 	
-	/// Returns a NSData object by uncompressing the receiver using the given compression algorithm.
+	/// Returns a Data object by uncompressing the receiver using the given compression algorithm.
 	///
-	///     let uncompressedData = someCompressedData.uncompressedDataUsingCompression(Compression.LZFSE)
+	///     let uncompressedData = someCompressedData.uncompressedDataUsingCompression(Compression.lzfse)
 	///
 	/// - Parameter compression: Algorithm to use during decompression
-	/// - Returns: A NSData object created by decoding the receiver's contents using the provided compression algorithm. Returns nil if decompression fails or if the receiver's length is 0.
+	/// - Returns: A Data object created by decoding the receiver's contents using the provided compression algorithm. Returns nil if decompression fails or if the receiver's length is 0.
 	func uncompressedDataUsingCompression(_ compression: Compression) -> Data? {
 		return self.dataUsingCompression(compression, operation: .decode)
 	}
@@ -153,8 +153,8 @@ extension Data {
 			return nil
 		}
 		
-		// setup the stream's source
 		let outputData = withUnsafeBytes { (bytes: UnsafePointer<UInt8>) -> Data? in
+			// setup the stream's source
 			stream.src_ptr = bytes
 			stream.src_size = count
 			
@@ -177,7 +177,7 @@ extension Data {
 					if stream.dst_size == 0 {
 						// Output buffer full...
 						
-						// Write out to mutableData
+						// Write out to outputData
 						outputData.append(dstBufferPtr, count: dstBufferSize)
 						
 						// Re-use dstBuffer
