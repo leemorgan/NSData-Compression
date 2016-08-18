@@ -40,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9B601ADD1B5ACE9A008C2BDA /* NSData+Compression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NSData+Compression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B601AEC1B5ACE9A008C2BDA /* NSData+CompressionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSData+CompressionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B601ADD1B5ACE9A008C2BDA /* Data+Compression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data+Compression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B601AEC1B5ACE9A008C2BDA /* Data+CompressionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Data+CompressionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B601AF01B5ACE9A008C2BDA /* NSData+CompressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+CompressionTests.swift"; sourceTree = "<group>"; };
 		9B601AF21B5ACE9A008C2BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B601AFD1B5ACEBD008C2BDA /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
@@ -88,8 +88,8 @@
 		9B601ADE1B5ACE9A008C2BDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B601ADD1B5ACE9A008C2BDA /* NSData+Compression.app */,
-				9B601AEC1B5ACE9A008C2BDA /* NSData+CompressionTests.xctest */,
+				9B601ADD1B5ACE9A008C2BDA /* Data+Compression.app */,
+				9B601AEC1B5ACE9A008C2BDA /* Data+CompressionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,9 +157,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B601ADC1B5ACE9A008C2BDA /* NSData+Compression */ = {
+		9B601ADC1B5ACE9A008C2BDA /* Data+Compression */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B601AF51B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "NSData+Compression" */;
+			buildConfigurationList = 9B601AF51B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "Data+Compression" */;
 			buildPhases = (
 				9B601AD91B5ACE9A008C2BDA /* Sources */,
 				9B601ADA1B5ACE9A008C2BDA /* Frameworks */,
@@ -169,14 +169,14 @@
 			);
 			dependencies = (
 			);
-			name = "NSData+Compression";
+			name = "Data+Compression";
 			productName = "NSData+Compression";
-			productReference = 9B601ADD1B5ACE9A008C2BDA /* NSData+Compression.app */;
+			productReference = 9B601ADD1B5ACE9A008C2BDA /* Data+Compression.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9B601AEB1B5ACE9A008C2BDA /* NSData+CompressionTests */ = {
+		9B601AEB1B5ACE9A008C2BDA /* Data+CompressionTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B601AF81B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "NSData+CompressionTests" */;
+			buildConfigurationList = 9B601AF81B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "Data+CompressionTests" */;
 			buildPhases = (
 				9B601AE81B5ACE9A008C2BDA /* Sources */,
 				9B601AE91B5ACE9A008C2BDA /* Frameworks */,
@@ -187,9 +187,9 @@
 			dependencies = (
 				9B601AEE1B5ACE9A008C2BDA /* PBXTargetDependency */,
 			);
-			name = "NSData+CompressionTests";
+			name = "Data+CompressionTests";
 			productName = "NSData+CompressionTests";
-			productReference = 9B601AEC1B5ACE9A008C2BDA /* NSData+CompressionTests.xctest */;
+			productReference = 9B601AEC1B5ACE9A008C2BDA /* Data+CompressionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B601AD81B5ACE9A008C2BDA /* Build configuration list for PBXProject "NSData+Compression" */;
+			buildConfigurationList = 9B601AD81B5ACE9A008C2BDA /* Build configuration list for PBXProject "Data+Compression" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -225,8 +225,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B601ADC1B5ACE9A008C2BDA /* NSData+Compression */,
-				9B601AEB1B5ACE9A008C2BDA /* NSData+CompressionTests */,
+				9B601ADC1B5ACE9A008C2BDA /* Data+Compression */,
+				9B601AEB1B5ACE9A008C2BDA /* Data+CompressionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,7 +286,7 @@
 /* Begin PBXTargetDependency section */
 		9B601AEE1B5ACE9A008C2BDA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B601ADC1B5ACE9A008C2BDA /* NSData+Compression */;
+			target = 9B601ADC1B5ACE9A008C2BDA /* Data+Compression */;
 			targetProxy = 9B601AED1B5ACE9A008C2BDA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -424,7 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-CompressionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSData+Compression.app/Contents/MacOS/NSData+Compression";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Data+Compression.app/Contents/MacOS/Data+Compression";
 			};
 			name = Debug;
 		};
@@ -438,14 +438,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "leemorgan.NSData-CompressionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSData+Compression.app/Contents/MacOS/NSData+Compression";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Data+Compression.app/Contents/MacOS/Data+Compression";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B601AD81B5ACE9A008C2BDA /* Build configuration list for PBXProject "NSData+Compression" */ = {
+		9B601AD81B5ACE9A008C2BDA /* Build configuration list for PBXProject "Data+Compression" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B601AF31B5ACE9A008C2BDA /* Debug */,
@@ -454,7 +454,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B601AF51B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "NSData+Compression" */ = {
+		9B601AF51B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "Data+Compression" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B601AF61B5ACE9A008C2BDA /* Debug */,
@@ -463,7 +463,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B601AF81B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "NSData+CompressionTests" */ = {
+		9B601AF81B5ACE9A008C2BDA /* Build configuration list for PBXNativeTarget "Data+CompressionTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B601AF91B5ACE9A008C2BDA /* Debug */,
