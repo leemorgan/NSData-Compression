@@ -40,7 +40,7 @@ extension Data {
 	///
 	///     let data = Data(contentsOfArchive: absolutePathToFile)
 	///
-	/// - Parameter path: The absolute path of the file from which to read data
+	/// - Parameter contentsOfArchive: The absolute path of the file from which to read data
 	/// - Returns: A Data object initialized by decompressing the data from the file specified by `path`. Returns `nil` if decompression fails.
 	init?(contentsOfArchive path: String) {
 		self.init(contentsOfArchive: path, usedCompression: nil)
@@ -51,7 +51,7 @@ extension Data {
 	/// 
 	///     let data = Data(contentsOfArchive: absolutePathToFile, usedCompression: Compression.lzfse)
 	///
-	/// - Parameter path: The absolute path of the file from which to read data
+	/// - Parameter contentsOfArchive: The absolute path of the file from which to read data
 	/// - Parameter usedCompression: Algorithm to use during decompression. If compression is nil, attempts to determine the appropriate decompression algorithm using the path's extension
 	/// - Returns: A Data object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm. Returns `nil` if decompression fails.
 	init?(contentsOfArchive path: String, usedCompression: Compression?) {

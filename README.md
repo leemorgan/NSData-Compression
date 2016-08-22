@@ -13,25 +13,25 @@ You will also need to include the `libcompression` library in your project.
 Data Extensions
 =====
 
-    func compressedDataUsingCompression(compression: Compression) -> Data?
+    func compressed(using: Compression) -> Data?
 Returns a Data object created by compressing the receiver using the given compression algorithm.
 
 <br>
 
-    func uncompressedDataUsingCompression(compression: Compression) -> Data?
+    func uncompressed(using: Compression) -> Data?
 Returns a Data object by uncompressing the receiver using the given compression algorithm.
 
 <br>
 
-    convenience init?(contentsOfArchive path: String, usedCompression: Compression?)
-Returns a Data object initialized by decompressing the data from the file specified by `path` using the given `compression` algorithm.
+    init?(contentsOfArchive: String, usedCompression: Compression?)
+Returns a Data object initialized by decompressing the data from the file specified by `contentsOfArchive` using the given `usedCompression` algorithm.
 
 <br>
 
-    convenience init?(contentsOfArchive path: String)
-Returns a Data object initialized by decompressing the data from the file specified by `path`. Attempts to determine the appropriate decompression algorithm using the path's extension.
+    init?(contentsOfArchive: String)
+Returns a Data object initialized by decompressing the data from the file specified by `contentsOfArchive`. Attempts to determine the appropriate decompression algorithm using the path's extension.
 
-This method is equivalent to `Data(contentsOfArchive:usedCompression:)` with `nil compression`
+This method is equivalent to `Data(contentsOfArchive:usedCompression:)` with `nil usedCompression`
 
 Documentation
 =====
