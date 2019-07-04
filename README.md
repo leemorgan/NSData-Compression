@@ -1,3 +1,7 @@
+⚠️ Deprecated and No Longer Maintained ⚠️
+=====
+In iOS 13 and Apple's other 2019 operating system releases there are new built-in methods on `NSData` for [compressing](https://developer.apple.com/documentation/foundation/nsdata/3174960-compressed) and [decompressing](https://developer.apple.com/documentation/foundation/nsdata/3174961-decompressed) data, so I ([@JJC1138](https://github.com/JJC1138)) won't be making any further updates to this library and would encourage you to move to the native methods when possible.
+
 Purpose
 =====
 Compression is a set of extensions to Swift's Foundation Data type that provide data compression and decompression functionality by wrapping [libcompression](https://developer.apple.com/library/mac/documentation/Performance/Reference/Compression/), a new library available on OS 10.11 and iOS 9.0
