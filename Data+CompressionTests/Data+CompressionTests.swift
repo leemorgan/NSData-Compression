@@ -86,22 +86,22 @@ class Data_CompressionTests: XCTestCase {
 		// Test LZ4
 		compressedData = uncompressedData.compressed(using: Compression.lz4)
 		verifiedData = testDataOfType("lz4")
-		XCTAssertEqual(compressedData!, verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData, "lz4 vs benchmark")
 		
 		// Test ZLIB
 		compressedData = uncompressedData.compressed(using: Compression.zlib)
 		verifiedData = testDataOfType("zlib")
-		XCTAssertEqual(compressedData!, verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData, "zlib vs benchmark")
 		
 		// Test LZMA
 		compressedData = uncompressedData.compressed(using: Compression.lzma)
 		verifiedData = testDataOfType("lzma")
-		XCTAssertEqual(compressedData!, verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData, "lzma vs benchmark")
 		
 		// Test LZFSE
 		compressedData = uncompressedData.compressed(using: Compression.lzfse)
 		verifiedData = testDataOfType("lzfse")
-		XCTAssertEqual(compressedData!, verifiedData)
+		XCTAssertEqual(compressedData!, verifiedData, "lzfse vs benchmark")
 	}
 	
 	

@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "D8D6CD9B-27A3-4E5D-BB19-B7D84B729152",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Data+Compression.xcodeproj",
+      "identifier" : "9B601ADC1B5ACE9A008C2BDA",
+      "name" : "Data+Compression"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Data+Compression.xcodeproj",
+        "identifier" : "9B601AEB1B5ACE9A008C2BDA",
+        "name" : "Data+CompressionTests"
+      }
+    }
+  ],
+  "version" : 1
+}
