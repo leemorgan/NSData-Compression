@@ -153,9 +153,10 @@ extension Data {
 			return nil
 		}
 		
-		let outputData = withUnsafeBytes { (bytes: UnsafePointer<UInt8>) -> Data? in
+		let outputData = withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> Data? in
 			// setup the stream's source
-			stream.src_ptr = bytes
+			let unsafeBufferPointer = buffer.bindMemory(to: UInt8.self)
+			stream.src_ptr = unsafeBufferPointer.baseAddress!
 			stream.src_size = count
 			
 			// setup the stream's output buffer
